@@ -12,7 +12,7 @@ module.exports = (config) ->
       'test/**/*.coffee': ['browserify']
     port: 9876
     colors: true
-    browsers: ['PhantomJS']
+    browsers: ['Chrome']
     singleRun: true
     browserify:
       transform: ['coffeeify']
