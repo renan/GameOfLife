@@ -60,3 +60,5 @@ class Generation
         result.push @cellGrid[neighbour[0]][neighbour[1]]
 
     result
+
+module.exports = Generation

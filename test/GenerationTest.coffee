@@ -1,3 +1,4 @@
+Generation = require '../src/Generation'
 
 describe 'Generation', ->
   it 'should die when under-population', ->
