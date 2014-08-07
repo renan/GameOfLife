@@ -6,7 +6,7 @@ module.exports = (config) ->
       'src/**/*.coffee'
       'test/**/*.coffee'
     ]
-    reporters: ['progress']
+    reporters: ['progress', 'coverage']
     preprocessors:
       'src/**/*.coffee': ['browserify']
       'test/**/*.coffee': ['browserify']
@@ -15,6 +15,10 @@ module.exports = (config) ->
     browsers: ['Chrome']
     singleRun: true
     browserify:
-      transform: ['coffeeify']
+      transform: ['coffeeify', 'istanbulify']
       extensions: ['.coffee']
       debug: true
+    coverageReporter:
+      type: 'text'
+      subdir: '.'
+      dir: 'build/'
