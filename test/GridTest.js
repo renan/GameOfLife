@@ -6,10 +6,10 @@ import Cell from '../src/Cell';
 
 describe('Grid', function() {
   it('should initialize from array of lines', function() {
-    let grid = Grid.fromArray(
+    let grid = Grid.fromArray([
       [0, 1, 0],
       [1, 0, 1]
-    );
+    ]);
 
     expect(grid).to.be.an(Grid);
     expect(
@@ -22,7 +22,7 @@ describe('Grid', function() {
       [1, 0, 1],
       [0, 1, 0]
     ];
-    let grid = Grid.fromArray(...array);
+    let grid = Grid.fromArray(array);
 
     expect(grid.toArray()[0][0]).to.be(true);
     expect(grid.toArray(true)).to.eql(array);
@@ -40,7 +40,7 @@ describe('Grid', function() {
   });
 
   it('should return cells and their coordinates', function() {
-    let grid = Grid.fromArray([1]);
+    let grid = Grid.fromArray([[1]]);
     let [x, y, cell] = grid.cells().next().value;
 
     expect(x).to.equal(0);

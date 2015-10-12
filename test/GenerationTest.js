@@ -6,10 +6,10 @@ import Grid from '../src/Grid';
 
 describe('Generation', function() {
   it('should evolve to a new generation', function() {
-    let generation = new Generation(Grid.fromArray(
+    let generation = new Generation(Grid.fromArray([
       [1, 0, 1],
       [0, 1, 0]
-    ));
+    ]));
     let evolved = generation.evolve();
 
     expect(evolved).to.be.an(Generation);
@@ -17,10 +17,10 @@ describe('Generation', function() {
   });
 
   it('should die when under-population', function() {
-    let generation = new Generation(Grid.fromArray(
+    let generation = new Generation(Grid.fromArray([
       [1, 0],
       [0, 0]
-    ));
+    ]));
     expect(generation.evolve().grid.toArray(true)).to.eql([
       [0, 0],
       [0, 0]
@@ -28,10 +28,10 @@ describe('Generation', function() {
   });
 
   it('should live to the next generation', function() {
-    let generation = new Generation(Grid.fromArray(
+    let generation = new Generation(Grid.fromArray([
       [1, 0, 1],
       [0, 1, 1]
-    ));
+    ]));
     expect(generation.evolve().grid.toArray(true)).to.eql([
       [0, 0, 1],
       [0, 1, 1]
@@ -39,10 +39,10 @@ describe('Generation', function() {
   });
 
   it('should die when overcrowding', function() {
-    let generation = new Generation(Grid.fromArray(
+    let generation = new Generation(Grid.fromArray([
       [1, 1, 1],
       [1, 1, 1]
-    ));
+    ]));
     expect(generation.evolve().grid.toArray(true)).to.eql([
       [1, 0, 1],
       [1, 0, 1]
@@ -50,10 +50,10 @@ describe('Generation', function() {
   });
 
   it('should reproduce', function() {
-    let generation = new Generation(Grid.fromArray(
+    let generation = new Generation(Grid.fromArray([
       [1, 0],
       [1, 1]
-    ));
+    ]));
     expect(generation.evolve().grid.toArray(true)).to.eql([
       [1, 1],
       [1, 1]
@@ -69,7 +69,7 @@ describe('Generation', function() {
         [0, 0, 0, 0]
       ];
       expect(
-        new Generation(Grid.fromArray(...grid)).grid.toArray(true)
+        new Generation(Grid.fromArray(grid)).grid.toArray(true)
       ).to.eql(grid);
     });
 
@@ -82,7 +82,7 @@ describe('Generation', function() {
         [0, 0, 0, 0, 0, 0]
       ];
       expect(
-        new Generation(Grid.fromArray(...grid)).grid.toArray(true)
+        new Generation(Grid.fromArray(grid)).grid.toArray(true)
       ).to.eql(grid);
     });
 
@@ -96,7 +96,7 @@ describe('Generation', function() {
         [0, 0, 0, 0, 0, 0]
       ];
       expect(
-        new Generation(Grid.fromArray(...grid)).grid.toArray(true)
+        new Generation(Grid.fromArray(grid)).grid.toArray(true)
       ).to.eql(grid);
     });
 
@@ -109,14 +109,14 @@ describe('Generation', function() {
         [0, 0, 0, 0, 0]
       ];
       expect(
-        new Generation(Grid.fromArray(...grid)).grid.toArray(true)
+        new Generation(Grid.fromArray(grid)).grid.toArray(true)
       ).to.eql(grid);
     });
   });
 
-  describe('Generation Patterns : Oscillators', function() {
+  describe('Generation Patterns: Oscillators', function() {
     let animate = function (firstGeneration, generations) {
-      let generation = new Generation(Grid.fromArray(...firstGeneration));
+      let generation = new Generation(Grid.fromArray(firstGeneration));
 
       for (let evolved of generations) {
         generation = generation.evolve();

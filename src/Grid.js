@@ -8,7 +8,7 @@ export default class Grid {
     this._cells = new Map();
   }
 
-  static fromArray(...lines) {
+  static fromArray(lines) {
     let grid = new Grid(lines[0].length, lines.length);
 
     for (let y in lines) {
